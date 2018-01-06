@@ -44,14 +44,18 @@ import {AppService} from './app.service'
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="/viewpatients">View Patients</a>
           <a class="dropdown-item" routerLink="/addpatient">Add a Patient</a>
-          <a class="dropdown-item" routerLink="/findpatient">Find/Edit a Patient</a>         
+          <a class="dropdown-item" routerLink="/findpatient">Find/Edit a Patient</a>  
+                
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="/foo">Something else here</a>
+          <a class="dropdown-item" routerLink="/foo">Something else here!!</a>
+          
         </div>
       </li>
+      <!--
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
+      -->
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <button class="btn btn-outline-success my-2 my-sm-0"(click)="logout()">Logout</button>

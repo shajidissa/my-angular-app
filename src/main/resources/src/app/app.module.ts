@@ -7,6 +7,7 @@ import { RouterModule }   from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login.component';
 import { HomeComponent } from './home.component';
+import { HomeDescriptionComponent } from './home-description.component';
 import { FooComponent } from './foo.component';
 import { PatientComponent } from './patient.component';
 import { ViewPatientsComponent } from './view-patients.component';
@@ -17,6 +18,7 @@ import { FindPatientComponent } from './find-patient.component';
   declarations: [
     AppComponent,
     HomeComponent,
+    HomeDescriptionComponent,
     LoginComponent,
     FooComponent,
     PatientComponent,
@@ -30,7 +32,7 @@ import { FindPatientComponent } from './find-patient.component';
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot([
-     { path: '', component: HomeComponent },
+     { path: '', component: HomeDescriptionComponent },
      { path: 'login', component: LoginComponent },
      { path: 'viewpatients2', component: PatientComponent },
      { path: 'viewpatients', component: ViewPatientsComponent },
