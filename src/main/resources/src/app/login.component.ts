@@ -52,7 +52,7 @@ import {AppService} from './app.service'
 						</div>
 					</div>
 					<div class="footer">
-						Copyright &copy; 2017 &mdash; Saj Issa 
+						Copyright &copy; 2018 &mdash; Saj Issa 
 					</div>
 				</div>
 			</div>

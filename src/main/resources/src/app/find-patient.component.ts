@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {AppService, Patient} from './app.service'
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -16,15 +16,15 @@ import { Observable } from 'rxjs/Observable';
 
 
 <div class="container">
-	<form (ngSubmit)="getPatient()">
+	
 		<div class="form-group row">
 				<div class="col-xs-9">
-				    <input class="form-control" type="text" id="validationServer01" placeholder="Search">					
+				    <input class="form-control" type="text" id="search" [(ngModel)]="xxx" placeholder="Search">					
 				</div>
 		</div>
 		<div class="form-group row">
 				<div class="col-xs-9">
-					<select class="form-control" id="inlineFormCustomSelect" >
+					<select class="form-control" id="searchtype" [(ngModel)]="searchtype" >
 					    <option selected>Choose...</option>
 					    <option value="1">Id</option>
 					    <option value="2">Name</option>
@@ -34,45 +34,45 @@ import { Observable } from 'rxjs/Observable';
 		</div>
 		<div class="form-group row">
 			<div class="offset-xs-3 col-xs-9">
-				<button type="submit" class="btn btn-primary">Search</button>
+				<button class="btn btn-primary" (click)="getPatient()">Search</button>
 			</div>
 		</div>
-	</form>
+	
 </div>
  
+  <br>
+  <div class="container">
+  <label>{{ mymessage }}</label>
+  </div>
+   
  
   `
 })
 
 export class FindPatientComponent {
 
-    //patients: Patient[];   
-    //observablePatients: Observable<Patient[]>
-    
-    public patient = new Patient(1,'sample foo','kk');
-    private patientsUrl = 'http://51.141.9.85:5555/api/my-patient-microservice/demo/getpatient?id=1';
     
     constructor(private _service:AppService, private _http: Http) {}
-
+    xxx: string;
+    searchtype: string;
+    mymessage: string = '';
+    
+    
 	ngOnInit(): void {
-	    
-        //this.observableFoos = this.getAllPatientWithObservable()
-        //this.observablePatients = this._service.getAllPatientWithObservable()
-        
-        //this.observablePatients.subscribe(
-      	//	patients => this.patients = patients
-      	//);
-      
+	    //this.xxx = "kk"
         
 	}
   
     // this.foosUrl+this.foo.id
     getPatient(){
-    	alert('d');
-        this._service.getResource(this.patientsUrl)
-         .subscribe(
-                     data => this.patient = data,
-                     error =>  this.patient.name = 'Error');
+    	this.mymessage = 'xxx = ' + this.xxx + ' searchtype = ' + this.searchtype;
+    	
+    	
+    	if (this.searchtype == "undefined" || this.searchtype == "0")
+    	{
+    		this.mymessage = "Please select a value from dropdown";
+    	}
+        
     }
     
     
