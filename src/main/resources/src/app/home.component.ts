@@ -52,6 +52,17 @@ import {AppService} from './app.service'
           
         </div>
       </li>
+      
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Apis
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" target="_blank" href="https://www.cryptocompare.com/api/#-api-data-price-">Crypto Compare</a>
+          <a class="dropdown-item" target="_blank" href="https://www.twilio.com/console/project/settings">Twilio Api</a>      
+        </div>
+      </li>
+      
       <!--
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
