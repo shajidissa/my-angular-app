@@ -6,7 +6,9 @@ cd /Users/shajidissa/workspace_gci/spring-security-oauth/spring-security-oauth-u
 
 cd /Users/shajidissa/workspace_gci/my-angular-app/src/main/resources
 
-npm start
+
+
+
 http://localhost:8085
 
 

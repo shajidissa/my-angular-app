@@ -99,6 +99,27 @@ export class AppService {
         .catch(this.handleErrorObservable);
 	} 
 	
+  getPatientWithObservableById(id: string): Observable<Patient[]> {
+    return this._http.get('http://51.141.9.85:5555/api/my-patient-microservice/demo/getpatientbyid?id='+id)
+        .map(this.extractData)
+        .catch(this.handleErrorObservable);
+	} 
+	
+  getPatientWithObservableByName(name: string): Observable<Patient[]> {
+    return this._http.get('http://51.141.9.85:5555/api/my-patient-microservice/demo/getpatientbyname?name='+name)
+        .map(this.extractData)
+        .catch(this.handleErrorObservable);
+	} 
+	
+  getPatientWithObservableByNhsid(nhsid: string): Observable<Patient[]> {
+    return this._http.get('http://51.141.9.85:5555/api/my-patient-microservice/demo/getpatientbynhsid?nhsid='+nhsid)
+        .map(this.extractData)
+        .catch(this.handleErrorObservable);
+	} 
+	
+	
+	
+	
 private extractData2(res: Response) {
    let body = res.text();  // If response is a JSON use json()
    if (body) {
