@@ -23,9 +23,9 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators} from "@angular
     <div class="col-md-4 mb-3">
       <label for="validationServer01">First name</label>
       <input type="text" class="form-control" id="validationServer01" formControlName="Firstname" placeholder="First name" required>
-    <div  style="color:red; font-size: 11px;">
+      <div  style="color:red; font-size: 11px;">
           {{ namemessage }}
-        </div>
+      </div>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationServer02">Last name</label>
@@ -183,7 +183,7 @@ export class AddPatientComponent {
   addPatientWithPromise2(patient:Patient) {
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
-	  this._http.post("http://51.141.9.85:5555/api/my-patient-microservice/demo/createpatient4", patient, options)
+	  this._http.post("http://51.141.9.85:5555/api/my-patient-microservice/demo/createpatient", patient, options)
 	      .subscribe(
 	        res => {
 	          console.log("AAA" + res);

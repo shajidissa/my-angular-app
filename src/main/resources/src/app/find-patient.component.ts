@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
    <home-header></home-header> 
   
   <div class="container-fluid">
-    <h1 class="col-sm-12">Find/Edit Patients</h1>
+    <h1 class="col-sm-12">Find/Edit/Delete Patients</h1>
 </div>
 
 
@@ -24,8 +24,8 @@ import { Observable } from 'rxjs/Observable';
 		</div>
 		<div class="form-group row">
 				<div class="col-xs-9">
-					<select class="form-control" id="searchtype" [(ngModel)]="searchtype" >
-					    <option value="0" selected>Choose...</option>
+					<select style="width:223px;" class="form-control" id="searchtype" [(ngModel)]="searchtype" >
+					    <option value="" selected>Choose...</option>
 					    <option value="id">Id</option>
 					    <option value="name">Name</option>
 					    <option value="nhsid">NHS Id</option>
@@ -53,13 +53,29 @@ import { Observable } from 'rxjs/Observable';
       <th>#</th>
       <th>Name</th>
       <th>NHS ID</th>
+      <th>Save</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let patient of patients">
+    <tr *ngFor="let patient of patients; let i = index">
       <th scope="row">{{patient.id}}</th>
-      <td>{{patient.name}}</td>
-      <td>{{patient.nhsid}}</td>
+      
+      
+      <td> 
+      	<input name="name-{{patient.id}}" [(ngModel)]="patient.name">     
+      	<div id="msg-name-{{patient.id}}" style="color:red; font-size: 11px;"></div>
+      </td>
+      
+      <td> 
+      	<input name="nhsid-{{patient.id}}" [(ngModel)]="patient.nhsid"> 
+      	<div id="msg-nhsid-{{patient.id}}" style="color:red; font-size: 11px;"></div>
+     </td>
+      
+     <!-- <td>{{patient.name}}</td> 
+      <td>{{patient.nhsid}}</td> -->
+      <td><button class="btn btn-primary" (click)="makePatientEditable(patient, i)">Save</button> <div id="msg-saved-{{patient.id}}" style="color:red; font-size: 11px;"></div> </td>
+      <td><button class="btn btn-primary" (click)="makePatientEditable(patient)">Delete</button>  <div id="msg-deleted-{{patient.id}}" style="color:red; font-size: 11px;"></div> </td>
     </tr>
   </tbody>
 </table>
@@ -78,11 +94,13 @@ export class FindPatientComponent {
     mymessage: string = '';
     observablePatients: Observable<Patient[]>;
     patients: Patient[]; 
+    p: Patient;
     
     
     
 	ngOnInit(): void {
 	    //this.searchtext = "kk"
+	    this.searchtype ="name";
         
 	}
   
@@ -105,7 +123,7 @@ export class FindPatientComponent {
     	
     	
     	if ( (this.searchtext != undefined && this.searchtext != "") &&
-    		 (this.searchtype != undefined && this.searchtype != "0") )
+    		 (this.searchtype != undefined && this.searchtype != "") )
     	{
     	
     		if (this.searchtype == "id")
@@ -131,6 +149,66 @@ export class FindPatientComponent {
     	
         
     }
+    
+    
+    makePatientEditable(p : Patient, i : number) {
+    	//alert(i + ": " + p.id + " " + p.name + " " + p.nhsid  );
+    	
+    	document.getElementById('msg-name-'+p.id).innerHTML = "";
+    	document.getElementById('msg-nhsid-'+p.id).innerHTML = "";
+    	document.getElementById('msg-saved-'+p.id).innerHTML = "";
+    	document.getElementById('msg-deleted-'+p.id).innerHTML = "";
+    	this.updatePatientWithPromise2(p,i);
+    	
+    }
+    
+     updatePatientWithPromise2(patient:Patient, i : number) {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+	  this._http.put("http://51.141.9.85:5555/api/my-patient-microservice/demo/updatepatient", patient, options)
+	      .subscribe(
+	        res => {
+	          console.log("AAA" + res);
+	          document.getElementById('msg-saved-'+patient.id).innerHTML = "Saved";
+	          
+	        },
+	        err => {
+	          console.log("Error occured1" + err);
+	          const body = err.json() || '';   
+    		  //const error3 = body.error || JSON.stringify(body);
+    		  const error3 = JSON.stringify(body);
+    		  
+    		  const error4 = JSON.parse(error3)
+	          
+	          console.log("Error occured2 =" + error3 );
+	          //console.log("Error occured3 = " + error4.errorCode );
+	          console.log("Error occured4 =" + error4.status );
+	          
+	          var count = Object.keys(error4.errors).length;
+	          
+	          console.log("Error occured5 =" + count );
+	          
+	          this.mymessage = "";
+	          
+	          error4.errors.forEach(element => {
+				    console.log(element.field);
+				    console.log(element.defaultMessage);
+				    
+				    
+				    
+				    
+				    if (element.field == 'name') { document.getElementById('msg-name-'+patient.id).innerHTML = element.defaultMessage; }
+				    if (element.field == 'nhsid')  { document.getElementById('msg-nhsid-'+patient.id).innerHTML = element.defaultMessage; }
+				    
+				    
+				    //this.mymessage = this.mymessage + element.defaultMessage + " ";
+			  });
+				
+	          
+	          
+	        }
+      );
+  }
     
     
     

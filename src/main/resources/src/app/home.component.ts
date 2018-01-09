@@ -44,8 +44,7 @@ import {AppService} from './app.service'
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="/viewpatients">View Patients</a>
           <a class="dropdown-item" routerLink="/addpatient">Add a Patient</a>
-          <a class="dropdown-item" routerLink="/findpatient">Find/Edit a Patient</a>  
-          <a class="dropdown-item" routerLink="/deletepatient">Delete Patient</a> 
+          <a class="dropdown-item" routerLink="/findpatient">Find/Edit/Delete a Patient</a>  
                 
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="/foo">Something else here!!</a>
