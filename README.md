@@ -33,3 +33,6 @@ kill $(cat ./angular.file)
 sudo adduser si84 root
 sudo docker build -t test .
 sudo docker run -itd --name="testname" -p 80:4200 test
+
+git checkout -b v1.0
+
