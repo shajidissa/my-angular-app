@@ -48,8 +48,7 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class HomeDescriptionComponent {
-
-    
+ 
     constructor(private _service:AppService) {} 
     
 }

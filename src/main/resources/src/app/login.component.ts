@@ -7,8 +7,8 @@ import {AppService} from './app.service'
   styleUrls: ['../assets/css/login.css'], 
   template: `
   
-<body class="my-login-page">  
-<section class="h-100">
+  <body class="my-login-page">  
+  <section class="h-100">
 		<div class="container h-100">
 			<div class="row justify-content-md-center h-100">
 				<div class="card-wrapper">
@@ -62,6 +62,7 @@ import {AppService} from './app.service'
 	
     `
 })
+
 export class LoginComponent {
     public loginData = {username: "admin", password: "admin"};
 

@@ -12,11 +12,9 @@ import { Observable } from 'rxjs/Observable';
   
   <div class="container-fluid">
     <h1 class="col-sm-12">Find/Edit/Delete Patients</h1>
-</div>
+  </div>
 
-
-<div class="container">
-	
+  <div class="container">	
 		<div class="form-group row">
 				<div class="col-xs-9">
 				    <input class="form-control" type="text" id="search" [(ngModel)]="searchtext" placeholder="Search">					
@@ -36,9 +34,8 @@ import { Observable } from 'rxjs/Observable';
 			<div class="offset-xs-3 col-xs-9">
 				<button class="btn btn-primary" (click)="getPatient()">Search</button>
 			</div>
-		</div>
-	
-</div>
+		</div>	
+  </div>
  
   <br>
   <div class="container">
@@ -46,8 +43,8 @@ import { Observable } from 'rxjs/Observable';
   </div>
    
   <div *ngIf="patients?.length" class="container">
- <div class="row">
- <table class="table table-bordered">
+  <div class="row">
+  <table class="table table-bordered">
   <thead>
     <tr>
       <th>#</th>
@@ -60,8 +57,7 @@ import { Observable } from 'rxjs/Observable';
   <tbody>
     <tr *ngFor="let patient of patients; let i = index">
       <th scope="row">{{patient.id}}</th>
-      
-      
+        
       <td> 
       	<input name="name-{{patient.id}}" [(ngModel)]="patient.name">     
       	<div id="msg-name-{{patient.id}}" style="color:red; font-size: 11px;"></div>
@@ -74,7 +70,7 @@ import { Observable } from 'rxjs/Observable';
       
      <!-- <td>{{patient.name}}</td> 
       <td>{{patient.nhsid}}</td> -->
-      <td><button class="btn btn-primary" (click)="makePatientEditable(patient, i)">Save</button> <div id="msg-saved-{{patient.id}}" style="color:red; font-size: 11px;"></div> </td>
+      <td><button class="btn btn-primary" (click)="editPatient(patient, i)">Save</button> <div id="msg-saved-{{patient.id}}" style="color:red; font-size: 11px;"></div> </td>
       <td><button class="btn btn-primary" (click)="deletePatient(patient, i)">Delete</button>  <div id="msg-deleted-{{patient.id}}" style="color:red; font-size: 11px;"></div> </td>
     </tr>
   </tbody>
@@ -87,7 +83,6 @@ import { Observable } from 'rxjs/Observable';
 
 export class FindPatientComponent {
 
-    
     constructor(private _service:AppService, private _http: Http) {}
     searchtext: string;
     searchtype: string;
@@ -96,15 +91,10 @@ export class FindPatientComponent {
     patients: Patient[]; 
     p: Patient;
     
-    
-    
-	ngOnInit(): void {
-	    //this.searchtext = "kk"
-	    this.searchtype ="name";
-        
+	ngOnInit(): void {    
+	    this.searchtype ="name";      
 	}
   
-    // this.foosUrl+this.foo.id
     getPatient(){
     	//this.mymessage = 'searchtext = ' + this.searchtext + ' searchtype = ' + this.searchtype;
     	
@@ -181,35 +171,29 @@ export class FindPatientComponent {
 	          error4.errors.forEach(element => {
 				    console.log(element.field);
 				    console.log(element.defaultMessage);
-				    
-				    
-				    
-				    
+				     
 				    //if (element.field == 'name') { document.getElementById('msg-name-'+patient.id).innerHTML = element.defaultMessage; }
 				    //if (element.field == 'nhsid')  { document.getElementById('msg-nhsid-'+patient.id).innerHTML = element.defaultMessage; }
-				    
 				    
 				    //this.mymessage = this.mymessage + element.defaultMessage + " ";
 			  });
 				
-	          
-	          
 	        }
       );
     }
     
-    makePatientEditable(p : Patient, i : number) {
+    editPatient(p : Patient, i : number) {
     	//alert(i + ": " + p.id + " " + p.name + " " + p.nhsid  );
     	
     	document.getElementById('msg-name-'+p.id).innerHTML = "";
     	document.getElementById('msg-nhsid-'+p.id).innerHTML = "";
     	document.getElementById('msg-saved-'+p.id).innerHTML = "";
     	document.getElementById('msg-deleted-'+p.id).innerHTML = "";
-    	this.updatePatientWithPromise2(p,i);
+    	this.updatePatientWithPromise(p,i);
     	
     }
     
-     updatePatientWithPromise2(patient:Patient, i : number) {
+     updatePatientWithPromise(patient:Patient, i : number) {
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
 	  this._http.put("http://51.141.9.85:5555/api/my-patient-microservice/demo/updatepatient", patient, options)
@@ -239,15 +223,11 @@ export class FindPatientComponent {
 	          
 	          error4.errors.forEach(element => {
 				    console.log(element.field);
-				    console.log(element.defaultMessage);
-				    
-				    
-				    
+				    console.log(element.defaultMessage);				    
 				    
 				    if (element.field == 'name') { document.getElementById('msg-name-'+patient.id).innerHTML = element.defaultMessage; }
 				    if (element.field == 'nhsid')  { document.getElementById('msg-nhsid-'+patient.id).innerHTML = element.defaultMessage; }
-				    
-				    
+				    				    
 				    //this.mymessage = this.mymessage + element.defaultMessage + " ";
 			  });
 				

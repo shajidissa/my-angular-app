@@ -35,4 +35,5 @@ sudo docker build -t test .
 sudo docker run -itd --name="testname" -p 80:4200 test
 
 git checkout -b v1.0
-
+git checkout master
+git checkout v1.0

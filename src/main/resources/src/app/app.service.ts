@@ -116,79 +116,7 @@ export class AppService {
         .map(this.extractData)
         .catch(this.handleErrorObservable);
 	} 
-	
-	
-	
-	
-private extractData2(res: Response) {
-   let body = res.text();  // If response is a JSON use json()
-   if (body) {
-       return  body;
-    } else {
-       return {};
-    }
-}
-
-private handleError2(error: any) {
-   // In a real world app, we might use a remote logging infrastructure
-   // We'd also dig deeper into the error to get a better message
-   let errMsg = (error.message) ? error.message :
-   error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.error(errMsg); // log to console instead
-        return Observable.throw(errMsg);
-}
-	
-	private handleError3(error: any): Promise<any> {
-    console.error('Some error occured', error);
-    return Promise.reject(error.message || error);
-  }
-  
-  createTodo(patient: Patient): Promise<Patient> {
-    return this._http.post('http://51.141.9.85:5555/api/my-patient-microservice/demo/createpatient4', patient)
-      .toPromise().then(response => response.json() as Patient)
-      .catch(this.handleError3);
-  }
-  	
-  createPatient3(patient: Patient): Observable<any> {
-    return this._http.post("http://51.141.9.85:5555/api/my-patient-microservice/demo/createpatient4", patient)
-      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
- 
-  }
-  	
-  createPatient(patient: Patient): Observable<Patient> {
-     return this._http.post("http://51.141.9.85:5555/api/my-patient-microservice/demo/createpatient", patient)
-     .map(this.extractData2)
-     .catch(this.handleError2);
-    
- 
-  }
-  
-  createPatient2(patient: Patient): Observable<Patient> {
-    return this._http.post("http://51.141.9.85:5555/api/my-patient-microservice/demo/createpatient", patient)
-      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
- 
-  }
-  
-  
-  
-  addPatientWithObservable(patient:Patient): Observable<Patient> {
-	    let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-        return this._http.post("http://51.141.9.85:5555/api/my-patient-microservice/demo/createpatient4", patient, options)
-                   .map(this.extractData)
-                   .catch(this.handleErrorObservable);
-    }
-    
-    
-
-    private handleErrorPromise (error: Response | any) {
-	console.error("X " + error.message || error);
-	console.error("Y " + error.errorCode)
-	return Promise.reject(error.message || error);
-    }
-    
-  
-  
+	  
   private extractData(res: Response) {
     let body = res.json();
     console.log("U " + body);
@@ -200,11 +128,7 @@ private handleError2(error: any) {
 	    return Observable.throw(error.message || error);
 	} 
     
-  updatePatient(patient: Patient): Observable<Patient> {
-    return this._http.put("http://51.141.9.85:5555/api/my-patient-microservice/demo/createpatient", patient)
-      .map((res:Response) => res.json())
-      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-  }
+ 
 	
   
 }

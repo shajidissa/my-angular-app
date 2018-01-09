@@ -47,9 +47,7 @@ export class FooComponent {
         
         this.observableFoos.subscribe(
       		foos => this.foos = foos
-      	);
-      
-        
+      	);      
 	}
   
     // this.foosUrl+this.foo.id
@@ -59,8 +57,5 @@ export class FooComponent {
                      data => this.foo = data,
                      error =>  this.foo.name = 'Error');
     }
-    
-    
-    
-    
+       
 }

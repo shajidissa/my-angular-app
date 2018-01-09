@@ -8,14 +8,12 @@ import { Observable } from 'rxjs/Observable';
   providers: [AppService],
   template: `
   
-   <home-header></home-header> 
+  <home-header></home-header> 
   
   <div class="container-fluid">
     <h1 class="col-sm-12">All Patients</h1>
-</div>
+  </div>
 
-
- 
  <div class="container">
  <div class="row">
  <table class="table table-bordered">
@@ -35,8 +33,8 @@ import { Observable } from 'rxjs/Observable';
   </tbody>
 </table>
 
- </div>
- </div>
+</div>
+</div>
  
   `
 })
@@ -46,32 +44,15 @@ export class ViewPatientsComponent {
     patients: Patient[];   
     observablePatients: Observable<Patient[]>
     
-    public patient = new Patient(1,'sample foo','kk');
-    private patientsUrl = 'http://51.141.9.85:5555/api/my-patient-microservice/demo/getpatient?id=1';
-    
     constructor(private _service:AppService, private _http: Http) {}
 
 	ngOnInit(): void {
 	    
-        //this.observableFoos = this.getAllPatientWithObservable()
         this.observablePatients = this._service.getAllPatientWithObservable()
         
         this.observablePatients.subscribe(
       		patients => this.patients = patients
-      	);
-      
-        
+      	);     
 	}
-  
-    // this.foosUrl+this.foo.id
-    getPatient(){
-        this._service.getResource(this.patientsUrl)
-         .subscribe(
-                     data => this.patient = data,
-                     error =>  this.patient.name = 'Error');
-    }
-    
-    
-    
-    
+
 }
