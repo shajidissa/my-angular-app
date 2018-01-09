@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
   <home-header></home-header>
   <br>
   <div class="container">
-    This is a simple Oauth2, Angular4, Spring Microservices example.
+    This is a simple Oauth2, Angular4, Docker, Jenkins, Spring Microservices example.
     <br>
     <br>
     You can click on Actions; View Patients (GET), Add a Patient (POST), Find/Edit/Delete a Patient (GET/PUT/DELETE)
