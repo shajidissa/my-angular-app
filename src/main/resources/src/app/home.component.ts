@@ -43,6 +43,7 @@ import {AppService} from './app.service'
                 
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="/foo">Something else here!!</a>
+          <a class="dropdown-item" routerLink="/viewcrypto">View Crypto</a>
           
         </div>
       </li>

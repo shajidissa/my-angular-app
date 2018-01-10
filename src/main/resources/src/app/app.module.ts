@@ -12,6 +12,7 @@ import { FooComponent } from './foo.component';
 import { ViewPatientsComponent } from './view-patients.component';
 import { AddPatientComponent } from './add-patient.component';
 import { FindPatientComponent } from './find-patient.component';
+import { ViewCryptoComponent } from './view-crypto.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FindPatientComponent } from './find-patient.component';
     FooComponent,
     ViewPatientsComponent,
     AddPatientComponent,
-    FindPatientComponent   
+    FindPatientComponent,
+    ViewCryptoComponent   
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { FindPatientComponent } from './find-patient.component';
      { path: 'viewpatients', component: ViewPatientsComponent },
      { path: 'addpatient', component: AddPatientComponent },
      { path: 'findpatient', component: FindPatientComponent },
+     { path: 'viewcrypto', component: ViewCryptoComponent },
      { path: 'foo', component: FooComponent }])
   ],
   providers: [],

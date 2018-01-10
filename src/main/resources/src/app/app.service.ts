@@ -14,6 +14,14 @@ export class Foo {
     public nhsid: string) { }    
 }
 
+export class Crypto {
+  constructor(
+    public Id: string,
+    public CoinName: string,
+    public FullName: string,
+    public TotalCoinSupply: number) { }    
+}
+
 export class Patient {
   constructor(
     public id: number,
@@ -97,25 +105,25 @@ export class AppService {
     return this._http.get(this.foosUrl1)
         .map(this.extractData)
         .catch(this.handleErrorObservable);
-	} 
+  } 
 	
   getPatientWithObservableById(id: string): Observable<Patient[]> {
     return this._http.get('http://51.141.9.85:5555/api/my-patient-microservice/demo/getpatientbyid?id='+id)
         .map(this.extractData)
         .catch(this.handleErrorObservable);
-	} 
+  } 
 	
   getPatientWithObservableByName(name: string): Observable<Patient[]> {
     return this._http.get('http://51.141.9.85:5555/api/my-patient-microservice/demo/getpatientbyname?name='+name)
         .map(this.extractData)
         .catch(this.handleErrorObservable);
-	} 
+  } 
 	
   getPatientWithObservableByNhsid(nhsid: string): Observable<Patient[]> {
     return this._http.get('http://51.141.9.85:5555/api/my-patient-microservice/demo/getpatientbynhsid?nhsid='+nhsid)
         .map(this.extractData)
         .catch(this.handleErrorObservable);
-	} 
+  } 
 	  
   private extractData(res: Response) {
     let body = res.json();
@@ -123,12 +131,17 @@ export class AppService {
     return body;
   } 
 
-	private handleErrorObservable (error: Response | any) {
-	    console.error(error.message || error);
-	    return Observable.throw(error.message || error);
-	} 
+  private handleErrorObservable (error: Response | any) {
+	console.error(error.message || error);
+	return Observable.throw(error.message || error);
+  } 
     
- 
+  getAllCoins(): Observable<any> {
+    return this._http.get("http://51.141.9.85:5555/api/my-crypto-microservice/crypto/list")
+    //return this._http.get("http://localhost:8094/crypto/list")
+        .map(this.extractData)
+        .catch(this.handleErrorObservable);
+  } 
 	
   
 }
