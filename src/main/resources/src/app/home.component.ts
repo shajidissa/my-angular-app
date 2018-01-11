@@ -21,7 +21,9 @@ import {AppService} from './app.service'
       </li>
       <!--
       <li class="nav-item">
-        <a class="nav-link" href="http://51.141.9.85:5555/api/my-patient-microservice/swagger-ui.html">Swagger 2.0</a>
+        <a class="nav-link" href="http://51.141.9.85:5555/api/my-patient-microservice/swagger-ui.html">Patient - Swagger 2.0</a>
+        
+      
       </li>
       -->
       <li class="nav-item dropdown">
@@ -30,6 +32,8 @@ import {AppService} from './app.service'
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" target="_blank" href="http://51.141.9.85:5555/api/my-patient-microservice/swagger-ui.html">Patients</a>        
+          <a class="dropdown-item" target="_blank" href="http://51.141.9.85:5555/api/my-crypto-microservice/swagger-ui.html">Crypto</a>        
+          
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -44,6 +48,7 @@ import {AppService} from './app.service'
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="/foo">Something else here!!</a>
           <a class="dropdown-item" routerLink="/viewcrypto">View Crypto</a>
+          <a class="dropdown-item" routerLink="/favouritecrypto">Favourite Crypto</a>
           
         </div>
       </li>

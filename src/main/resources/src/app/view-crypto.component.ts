@@ -32,6 +32,7 @@ import { Observable } from 'rxjs/Observable';
  <table class="table table-bordered">
   <thead>
     <tr>
+      <th>Favourites</th>
       <th>#</th>
       <th>CoinName</th>
       <th>FullName</th>
@@ -40,6 +41,8 @@ import { Observable } from 'rxjs/Observable';
   </thead>
   <tbody>
     <tr *ngFor="let crypto of cryptos">
+      <td><button class="btn btn-primary" (click)="getPatient()">Add</button></td>
+      
       <th scope="row">{{crypto.Id}}</th>
       <td>{{crypto.CoinName}}</td>
       <td>{{crypto.FullName}}</td>
