@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AppService, Patient} from './app.service'
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { ReactiveFormsModule, FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'add-patient',

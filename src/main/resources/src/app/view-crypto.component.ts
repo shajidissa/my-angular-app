@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
   <home-header></home-header> 
   
   <div class="container-fluid">
-    <h1 class="col-sm-12">View Crypto Currencies</h1>
+    <h1 class="col-sm-12">View Crypto Currencies - {{count}}</h1>
   </div>
 
 <!--
@@ -41,7 +41,7 @@ import { Observable } from 'rxjs/Observable';
   </thead>
   <tbody>
     <tr *ngFor="let crypto of cryptos">
-      <td><button class="btn btn-primary" (click)="getPatient()">Add</button></td>
+      <td><button class="btn btn-primary" (click)="addCoin(crypto.Id, crypto.FullName)">Add</button></td>
       
       <th scope="row">{{crypto.Id}}</th>
       <td>{{crypto.CoinName}}</td>
@@ -65,7 +65,8 @@ import { Observable } from 'rxjs/Observable';
 export class ViewCryptoComponent {
 
     cryptos: Crypto[] = [];   
-    observableCryptos: Observable<any>
+    observableCryptos: Observable<any>;
+    count: number;
     
     constructor(private _service:AppService, private _http: Http) {}
 
@@ -85,9 +86,11 @@ export class ViewCryptoComponent {
 	      		//console.log(json.Response);
 	      		//console.log(json.Data);
 	      		
-	      		var count = Object.keys(json.Data).length;
+	      		var c = Object.keys(json.Data).length;
 	          
-	          	console.log("count =" + count );
+	          	console.log("count =" + c );
+	          	
+	          	this.count = c;
 	      		
 	      		const dictionary = json.Data;
 	      		
@@ -103,5 +106,46 @@ export class ViewCryptoComponent {
       		}
       	);     
 	}
+	
+	 addCoin(id : string, coinname : string) {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      
+      //alert("id = " + id + " coinname = " + coinname);
+      
+      
+	  this._http.post("http://localhost:8094/crypto/create", {coincode:id,coinname:coinname,id:0}, options)
+	      .subscribe(
+	        res => {
+	          console.log("AAA" + res);
+	          //this.mymessage = "Added Patient";
+	          //this.userForm.reset();
+	        },
+	        err => {
+	          console.log("Error occured1" + err);
+	          const body = err.json() || '';   
+    		  const error3 = JSON.stringify(body);		  
+    		  const error4 = JSON.parse(error3)
+	          
+	          console.log("Error occured2 =" + error3 );
+	          console.log("Error occured4 =" + error4.status );
+	          
+	          var count = Object.keys(error4.errors).length;
+	          
+	          console.log("Error occured5 =" + count );
+	          
+	          //this.mymessage = "";
+	          
+	          error4.errors.forEach(element => {
+				    console.log(element.field);
+				    console.log(element.defaultMessage);				    
+				    //if (element.field == 'name') { this.namemessage = element.defaultMessage; }
+				    //if (element.field == 'nhsid')  { this.nhsmessage = element.defaultMessage; }			    
+			  });
+	        }
+      );
+      
+  }
+	
 
 }

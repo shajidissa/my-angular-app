@@ -48,7 +48,7 @@ import {AppService} from './app.service'
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="/foo">Something else here!!</a>
           <a class="dropdown-item" routerLink="/viewcrypto">View Crypto</a>
-          <a class="dropdown-item" routerLink="/favouritecrypto">Favourite Crypto</a>
+          <a class="dropdown-item" routerLink="/viewfavouritecrypto">Favourite Crypto</a>
           
         </div>
       </li>

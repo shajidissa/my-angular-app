@@ -142,6 +142,13 @@ export class AppService {
         .map(this.extractData)
         .catch(this.handleErrorObservable);
   } 
+  
+  getFavCryptosWithObservable(): Observable<any[]> {
+    return this._http.get("http://51.141.9.85:5555/api/my-crypto-microservice/crypto/myfav")
+    //return this._http.get("http://localhost:8094/crypto/myfav")
+        .map(this.extractData)
+        .catch(this.handleErrorObservable);
+  } 
 	
   
 }

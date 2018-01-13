@@ -13,6 +13,7 @@ import { ViewPatientsComponent } from './view-patients.component';
 import { AddPatientComponent } from './add-patient.component';
 import { FindPatientComponent } from './find-patient.component';
 import { ViewCryptoComponent } from './view-crypto.component';
+import { ViewFavouriteCryptoComponent } from './view-favourite-crypto.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ViewCryptoComponent } from './view-crypto.component';
     ViewPatientsComponent,
     AddPatientComponent,
     FindPatientComponent,
-    ViewCryptoComponent   
+    ViewCryptoComponent,
+    ViewFavouriteCryptoComponent   
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,7 @@ import { ViewCryptoComponent } from './view-crypto.component';
      { path: 'addpatient', component: AddPatientComponent },
      { path: 'findpatient', component: FindPatientComponent },
      { path: 'viewcrypto', component: ViewCryptoComponent },
+     { path: 'viewfavouritecrypto', component: ViewFavouriteCryptoComponent },
      { path: 'foo', component: FooComponent }])
   ],
   providers: [],
