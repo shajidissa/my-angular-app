@@ -113,8 +113,8 @@ export class ViewCryptoComponent {
       
       //alert("id = " + id + " coinname = " + coinname);
       
-      
-	  this._http.post("http://localhost:8094/crypto/create", {coincode:id,coinname:coinname,id:0}, options)
+      //this._http.post("http://localhost:8094/crypto/create", {coincode:id,coinname:coinname,id:0}, options)
+	  this._http.post("http://51.141.9.85:5555/api/my-crypto-microservice/crypto/create", {coincode:id,coinname:coinname,id:0}, options)
 	      .subscribe(
 	        res => {
 	          console.log("AAA" + res);
