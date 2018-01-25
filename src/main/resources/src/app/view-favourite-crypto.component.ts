@@ -84,6 +84,13 @@ export class ViewFavouriteCryptoComponent {
         this.observableCryptos.subscribe(
       		cryptos => this.cryptos = cryptos
       	);     
+      	
+      	
+      	setInterval(() => {
+                this.observableCryptos.subscribe(
+      				cryptos => this.cryptos = cryptos
+      			); 
+        }, 10000);
 	}
 	
 	removeCoin(id : number, i : number) {

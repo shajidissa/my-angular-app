@@ -66,7 +66,7 @@ export class AppService {
   saveToken(token){
     var expireDate = new Date().getTime() + (1000 * token.expires_in);
     Cookie.set("access_token", token.access_token, expireDate);
-    console.log('Obtained Access token');
+    console.log('Obtained Access token' + token);
     this._router.navigate(['/']);
   }
 
