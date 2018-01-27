@@ -20,7 +20,7 @@ import { Observable } from 'rxjs/Observable';
     A description of the Rest api can be found in the Swagger link.
     <br>
     <br>
-    The Spring discovery service Eurareka is : <a href="http://51.141.9.85:8761" target="_blank">http://51.141.9.85:8761</a>
+    The Spring discovery service Eureka is : <a href="http://51.141.9.85:8761" target="_blank">http://51.141.9.85:8761</a>
     <br>
     <br>
     Jenkins pipe line : <a href="http://52.191.209.219/jenkins/" target="_blank">http://52.191.209.219/jenkins/</a>

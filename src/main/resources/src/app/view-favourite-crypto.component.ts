@@ -97,7 +97,7 @@ export class ViewFavouriteCryptoComponent {
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
 	  //this._http.delete("http://localhost:8094/crypto/delete/?id="+id, options)
-	  this._http.delete("http://51.141.9.85:5555/api/my-crypto-microservice/delete/?id="+id, options)
+	  this._http.delete("http://51.141.9.85:5555/api/my-crypto-microservice/crypto/delete/?id="+id, options)
 	      .subscribe(
 	        res => {
 	          console.log("AAA" + res);
