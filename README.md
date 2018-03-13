@@ -4,7 +4,12 @@ cd src/main/resources
 
 cd /Users/shajidissa/workspace_gci/spring-security-oauth/spring-security-oauth-ui-password-angular4/src/main/resources
 
+
 cd /Users/shajidissa/workspace_gci/my-angular-app/src/main/resources
+ng serve
+http://localhost:4200
+
+ng g c YOURCOMPONENTNAME
 
 
 
@@ -19,8 +24,7 @@ ng build --prod
 
 
 
-ng serve
-http://localhost:4200
+
 
 
 cd /home/si84/app/src/main/resources

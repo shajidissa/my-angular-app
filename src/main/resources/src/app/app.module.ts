@@ -14,6 +14,7 @@ import { AddPatientComponent } from './add-patient.component';
 import { FindPatientComponent } from './find-patient.component';
 import { ViewCryptoComponent } from './view-crypto.component';
 import { ViewFavouriteCryptoComponent } from './view-favourite-crypto.component';
+import { SetAlertsComponent } from './set-alerts/set-alerts.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ViewFavouriteCryptoComponent } from './view-favourite-crypto.component'
     AddPatientComponent,
     FindPatientComponent,
     ViewCryptoComponent,
-    ViewFavouriteCryptoComponent   
+    ViewFavouriteCryptoComponent,
+    SetAlertsComponent   
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,7 @@ import { ViewFavouriteCryptoComponent } from './view-favourite-crypto.component'
      { path: 'findpatient', component: FindPatientComponent },
      { path: 'viewcrypto', component: ViewCryptoComponent },
      { path: 'viewfavouritecrypto', component: ViewFavouriteCryptoComponent },
+     { path: 'setalerts', component: SetAlertsComponent },
      { path: 'foo', component: FooComponent }])
   ],
   providers: [],

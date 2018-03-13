@@ -50,7 +50,8 @@ import { Observable } from 'rxjs/Observable';
       <td>{{crypto.coinname}}</td>
       <td>{{crypto.eth}}</td>
       <td>{{crypto.btc}}</td>
-      <td><button class="btn btn-primary" (click)="addAlertCoin(crypto.id, i)">Alert</button></td>
+      <!-- <td><button class="btn btn-primary" (click)="addAlertCoin(crypto.id, i)">Alert</button></td> -->
+      <td><button class="btn btn-primary" routerLink="/setalerts">SMS</button></td>
       
       
     </tr>
